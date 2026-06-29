@@ -1,35 +1,34 @@
-# 🚀 Marathi Speech Recognition Conformer
+# Marathi Conformer RNN-T Speech Recognition
 
-A speech recognition system custom-trained on Marathi dataset using Conformer RNN-T architectures.
-
----
-
-## 🛠️ Technology Stack
-* **Languages & Frameworks:** Python, Conformer RNN-T, PyTorch, Speech Recognition
-* **Organization:** [Humanity Co](https://github.com/humanity-co)
+An automatic offline speech recognition system custom-trained on Marathi datasets. It uses a Conformer RNN-T model to generate local audio transcription files.
 
 ---
 
-## 📦 Features
-* Clean directory structure.
-* Stripped of large caches, node_modules, and environment secrets for easy portability.
-* Pre-configured with robust `.gitignore` for developer security.
+## Technical Stack
+* Languages and Frameworks: Python, Conformer RNN-T, PyTorch, Librosa
+* Host Space: Humanity Co (https://github.com/humanity-co)
 
 ---
 
-## 🚀 Setup & Installation
+## Features
+* Simplified project structure containing only source code.
+* Local credentials, large checkpoints, and build files are excluded via .gitignore.
+* Local database configuration templates provided for development environment.
+
+---
+
+## Installation and Execution
 1. Clone the repository:
-   ```bash
-   git clone https://github.com/humanity-co/marathi-speech-recognition-conformer.git
-   cd marathi-speech-recognition-conformer
-   ```
-2. Reinstall dependencies:
-   * **Node/React projects:** Run `npm install`
-   * **Python projects:** Run `pip install -r requirements.txt` (or configure a virtual environment)
-   * **Rust projects:** Run `cargo build`
-   * **Swift projects:** Open in Xcode or run `swift build`
+   git clone https://github.com/humanity-co/marathi-conformer-rnnt-speech-recognition.git
+   cd marathi-conformer-rnnt-speech-recognition
+
+2. Restoring dependencies:
+   * Node.js / React projects: Run `npm install`
+   * Python projects: Run `pip install -r requirements.txt` (or configure a virtual environment)
+   * Rust projects: Run `cargo build`
+   * Swift projects: Open in Xcode or run `swift build`
 
 ---
 
-## 📄 License
-This project is proprietary and confidential. Created for **Humanity Co**.
+## License
+This project is proprietary and confidential. Property of Humanity Co.

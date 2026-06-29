@@ -1,0 +1,93 @@
+# =============================================================================
+# Marathi Conformer RNN-T — Default Configuration
+# =============================================================================
+
+# --- Audio Processing ---
+audio:
+  sample_rate: 16000
+  n_mels: 80
+  n_fft: 512
+  win_length: 400        # 25ms at 16kHz
+  hop_length: 160        # 10ms at 16kHz
+  f_min: 0.0
+  f_max: 8000.0
+
+# --- Conformer Encoder ---
+encoder:
+  input_dim: 80          # Must match n_mels
+  d_model: 256
+  num_blocks: 6
+  num_heads: 4
+  conv_kernel_size: 15
+  ffn_expansion_factor: 4
+  dropout: 0.1
+  subsampling_factor: 4  # Conv2D subsampling reduces time by 4x
+
+# --- Prediction Network (Decoder LSTM) ---
+predictor:
+  embed_dim: 256
+  hidden_size: 512
+  num_layers: 2
+  dropout: 0.1
+
+# --- Joint Network ---
+joint:
+  joint_dim: 512
+
+# --- Training ---
+training:
+  batch_size: 8
+  epochs: 100
+  learning_rate: 0.001
+  weight_decay: 1.0e-6
+  grad_clip_norm: 5.0
+  grad_accumulation_steps: 4
+  warmup_steps: 1000
+  max_duration: 15.0     # Max audio duration in seconds
+  num_workers: 4
+  save_every_n_epochs: 5
+  val_every_n_epochs: 1
+  log_every_n_steps: 50
+
+# --- Augmentation ---
+augmentation:
+  spec_augment:
+    enabled: true
+    freq_mask_param: 27
+    time_mask_param: 100
+    num_freq_masks: 2
+    num_time_masks: 2
+  speed_perturb:
+    enabled: true
+    rates: [0.9, 1.0, 1.1]
+  noise_injection:
+    enabled: false
+    snr_db: 20.0
+
+# --- Tokenizer ---
+tokenizer:
+  type: "char"           # "char" or "sentencepiece"
+  sentencepiece_model: null
+  sentencepiece_vocab_size: 500
+
+# --- Decoding ---
+decoding:
+  method: "greedy"       # "greedy" or "beam"
+  beam_size: 10
+  lm_path: null
+  lm_weight: 0.1
+
+# --- Pseudo-Label Self-Training ---
+pseudo_label:
+  confidence_threshold: 0.7
+  unlabeled_audio_dir: null
+  output_manifest: "pseudo_labels.csv"
+
+# --- Paths ---
+paths:
+  train_manifest: "data/manifests/train.csv"
+  val_manifest: "data/manifests/val.csv"
+  test_manifest: "data/manifests/test.csv"
+  checkpoint_dir: "checkpoints"
+  cache_dir: "data/cached_features"
+  log_dir: "logs"

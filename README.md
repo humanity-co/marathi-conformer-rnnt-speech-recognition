@@ -31,4 +31,4 @@ An automatic offline speech recognition system custom-trained on Marathi dataset
 ---
 
 ## License
-This project is proprietary and confidential. Property of Humanity Co.
+This project is proprietary and confidential. 
